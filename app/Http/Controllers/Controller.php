@@ -16,31 +16,27 @@ class Controller extends BaseController
 {
     public function register (Request $request){
       
-           $name = $request->input('name');
+           $nombre = $request->input('nombre');
            $email = $request->input('email');
-           $password = $request->input('password');
+           $contraseña = $request->input('contraseña');
 
-        //    $password = Hash::make($password);
+           $contraseña = Hash::make($contraseña);
 
-        //    try {
-        //        return usuarios::create(
-        //            [
-        //                'name' => $name,
-        //                'email' => $email,
-        //                'password' => $password
-        //            ]);
-        //    } catch (QueryException $error) {
-        //        $eCode = $error->errorInfo[1];
+           try {
+               return usuarios::create(
+                   [
+                       'nombre' => $nombre,
+                       'email' => $email,
+                       'contraseña' => $contraseña
+                   ]);
+           } catch (QueryException $error) {
+               $eCode = $error->errorInfo[1];
 
-        //        if($eCode == '1062'){
-        //            return response()->json([
-        //                'error' => "Email ya resgistrado anteriormente"
-        //            ]);
-        //        }
-        //    }
-
-
-        $usuario = usuarios::create($request->all());
-        return $usuario;
+               if($eCode == '1062'){
+                   return response()->json([
+                       'error' => "Email ya resgistrado anteriormente"
+                   ]);
+               }
+           }
     }
 }
