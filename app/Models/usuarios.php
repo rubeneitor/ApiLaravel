@@ -29,6 +29,10 @@ class usuarios extends Model
         return $this->hasMany('App\Models\Banco');
     }
 
+    public function prestamos(){
+        return $this->hasMany('App\Models\Prestamo');
+    }
+
     /**
      * The attributes that should be cast to native types.
      *

@@ -4,21 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Banco extends Model
+class Prestamo extends Model
 {
     use HasFactory;
 
-     /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'numCuenta',
-        'oficina',
-        'idUsuario'
+        'importe',
+        'intereses',
+        'idUsuario',
+        'idBanco'
     ];
 
     /**
@@ -31,12 +31,13 @@ class Banco extends Model
         'remember_token',
     ];
 
+
     public function usuarioId(){
         return $this->belongsTo('App\Models\Usuario', 'idUsuario', 'id');
     }
 
-    public function prestamos(){
-        return $this->hasMany('App\Models\Prestamo');
+    public function bancoId(){
+        return $this->belongsTo('App\Models\Banco', 'idBanco', 'id');
     }
 
     /**
