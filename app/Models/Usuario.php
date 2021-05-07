@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class usuarios extends Model
+class Usuario extends Model
 {
     use HasFactory;
 
@@ -13,6 +13,8 @@ class usuarios extends Model
         'nombre',
         'email',
         'contraseña',
+        'resSecreta',
+        'preSecreta'
     ];
 
     /**
@@ -22,7 +24,7 @@ class usuarios extends Model
      */
     protected $hidden = [
         'password',
-        'remember_token',
+        'resSecreta'
     ];
 
     public function bancos(){

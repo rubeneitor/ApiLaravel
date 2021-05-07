@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\usuarios;
+use App\Models\Usuario;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class Controller extends BaseController
+class ControllerUsuario extends BaseController
 {
     public function register (Request $request){
       
@@ -23,7 +23,7 @@ class Controller extends BaseController
            $contraseña = Hash::make($contraseña);
 
            try {
-               return usuarios::create(
+               return Usuario::create(
                    [
                        'nombre' => $nombre,
                        'email' => $email,
@@ -38,5 +38,36 @@ class Controller extends BaseController
                    ]);
                }
            }
+    }
+
+    //Primer paso de recuperacion de contraseña por email
+    public function recoverPass1(Request $request){
+
+        $email = $request->input('email');
+
+        try {
+            return Usuario::where('email', 'LIKE', $email)->pluck('preSecreta')->toArray();
+        } catch (QueryException $error) {
+            return $error;
+        }
+
+    }
+
+    //Segundo paso de recuperacion de contraseña por email
+    public function recoverPass2(Request $request){
+
+        $email = $request->input('email');
+        $resSecreta = $request->input('resSecreta');
+        $contraseña = $request->input('contraseña');
+
+        $contraseña = Hash::make($contraseña);
+
+        try {
+            return Usuario::where('email', '=', $email)
+            ->where('resSecreta', '=', $resSecreta)
+            ->update(['contraseña' => $contraseña]);
+        } catch (QueryException $error) {
+            return $error;
+        }
     }
 }

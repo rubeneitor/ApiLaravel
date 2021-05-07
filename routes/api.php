@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ControllerUsuario;
 // use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +23,7 @@ use App\Http\Controllers\Controller;
 // Route::group(['middleware' => ['cors']], function(){
 
     //registro
-    Route::post('/registro', [Controller::class, 'register']);
+    Route::post('/registro', [ControllerUsuario::class, 'register']);
 // });
 
 // Route::apiResource("registro", "Controller");
