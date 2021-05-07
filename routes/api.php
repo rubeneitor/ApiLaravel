@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ControllerUsuario;
+use App\Http\Controllers\ControllerBanco;
+use App\Http\Controllers\ControllerPago;
+use App\Http\Controllers\ControllerPrestamo;
 use Illuminate\Support\Facades\Route;
 
 
@@ -38,3 +41,18 @@ use Illuminate\Support\Facades\Route;
 
     //Logout usuario
     Route::post('/logout', [ControllerUsuario::class, 'logout']);
+
+
+    //Nueva cuenta bancaria
+    Route::post('nuevoBanco', [ControllerBanco::class, 'newBanco']);
+
+
+    //Historial de un usuario
+    Route::get('/historial/{param1}', [ControllerPago::class, 'historial']);
+
+
+    //Eliminar prestamo
+    Route::post('/borrarPrestamo', [ControllerPrestamo::class, 'deletePrestamo']);
+
+    //Modificar prestamo
+    Route::post('/modPrestamo', [ControllerPrestamo::class, 'updatePrestamo']);
