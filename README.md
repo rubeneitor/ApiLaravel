@@ -25,3 +25,14 @@ Primero de todo y antes de empezar a probar la API hay que tener una serie de co
 5.- Realizar las pruebas en POSTMAN creando anteriormente datos de prueba en la base de datos
 
 6.- Crear los endpoints que consideres necesarios según tu proyecto
+
+## Para usar en la aplicación
+Una vez tenido la API construida con todos los endpoints deseados creados, es hora de realizar la parte del frontend para que los usuarios o clientes puedan conectarse a la API y trabajar con ella.
+
+- Inicio de sesión junto con el logout
+
+- Consultar el perfil del usuario
+
+- Gestionar la aplicación 
+
+- Consultar datos 

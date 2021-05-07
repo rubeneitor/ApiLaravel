@@ -16,6 +16,7 @@ class CreatePagosTable extends Migration
     {
         Schema::create('pagos', function (Blueprint $table) {
             $table->bigIncrements('id');                                    //id
+            $table->string('bancoDestino');                                //cuenta del banco donde se hizo el pago
             $table->string('tipoPago');                                     //tipo de pago
             $table->integer('importe');                                     //importe del pago
             $table->string('estado');                                       //estado del pago
