@@ -15,21 +15,21 @@ class CreatePagosTable extends Migration
     public function up()
     {
         Schema::create('pagos', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('tipoPago');
-            $table->integer('importe');
-            $table->string('estado');
-            $table->unsignedBigInteger('idUsuario');
-            $table->foreign('idUsuario', 'fk_pagos_usuarios')
+            $table->bigIncrements('id');                                    //id
+            $table->string('tipoPago');                                     //tipo de pago
+            $table->integer('importe');                                     //importe del pago
+            $table->string('estado');                                       //estado del pago
+            $table->unsignedBigInteger('idUsuario');                        //id del usuario
+            $table->foreign('idUsuario', 'fk_pagos_usuarios')               //relacion entre la tabla pagos y usuarios
             ->on('usuarios')
             ->references('id')
             ->onDelete('restrict');
-            $table->unsignedBigInteger('idBanco');
-            $table->foreign('idBanco', 'fk_pagos_bancos')
+            $table->unsignedBigInteger('idBanco');                          //id del banco
+            $table->foreign('idBanco', 'fk_pagos_bancos')                   //relacion entre la tabla pagos y bancos
             ->on('bancos')
             ->references('id')
             ->onDelete('restrict');
-            $table->timestamps();
+            $table->timestamps();                                           
         });
     }
 

@@ -14,11 +14,14 @@ use Illuminate\Support\Facades\Hash;
 
 class ControllerUsuario extends BaseController
 {
+    //Registrar usuario nuevo
     public function register (Request $request){
       
            $nombre = $request->input('nombre');
            $email = $request->input('email');
            $contraseña = $request->input('contraseña');
+           $resSecreta = $request->input('resSecreta');
+           $preSecreta = $request->input('preSecreta');
 
            $contraseña = Hash::make($contraseña);
 
@@ -27,7 +30,9 @@ class ControllerUsuario extends BaseController
                    [
                        'nombre' => $nombre,
                        'email' => $email,
-                       'contraseña' => $contraseña
+                       'contraseña' => $contraseña,
+                       'resSecreta' => $resSecreta,
+                       'preSecreta' => $preSecreta
                    ]);
            } catch (QueryException $error) {
                $eCode = $error->errorInfo[1];

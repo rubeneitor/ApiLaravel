@@ -14,11 +14,11 @@ class CreateBancosTable extends Migration
     public function up()
     {
         Schema::create('bancos', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('numCuenta');
-            $table->string('oficina');
-            $table->unsignedBigInteger('idUsuario');
-            $table->foreign('idUsuario', 'fk_bancos_usuariosId')
+            $table->bigIncrements('id');                                //id del banco
+            $table->integer('numCuenta');                               //numero de cuenta
+            $table->string('oficina');                                  //oficina de la cuenta bancaria
+            $table->unsignedBigInteger('idUsuario');                    //id del usuario
+            $table->foreign('idUsuario', 'fk_bancos_usuariosId')        //relacion entre la tabla bancos y usuarios
             ->on('usuarios')
             ->references('id')
             ->onDelete('restrict');

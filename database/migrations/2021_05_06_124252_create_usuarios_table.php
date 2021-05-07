@@ -14,12 +14,12 @@ class CreateUsuariosTable extends Migration
     public function up()
     {
         Schema::create('usuarios', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nombre');
-            $table->string('email')->unique();
-            $table->string('contraseña');
-            $table->string('resSecreta');
-            $table->string('preSecreta');
+            $table->bigIncrements('id');                            //id del usuario
+            $table->string('nombre');                               //nombre del usuario
+            $table->string('email')->unique();                      //emial del usuario
+            $table->string('contraseña');                           //contraseña el usuario
+            $table->string('resSecreta');                           //respuesta secreta recuperacion contraseña
+            $table->string('preSecreta');                           //pregunta secreta recuperacion contraseña
             $table->timestamps();
         });
     }

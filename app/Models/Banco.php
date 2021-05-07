@@ -21,15 +21,7 @@ class Banco extends Model
         'idUsuario'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    //Metodos que relacionan las tablas (explicado en el modelo de relacion incluido en el repositorio)
 
     public function usuarioId(){
         return $this->belongsTo('App\Models\Usuario', 'idUsuario', 'id');
@@ -42,6 +34,8 @@ class Banco extends Model
     public function pagos(){
         return $this->hasMany('App\Models\Pago');
     }
+
+    /////////
 
     /**
      * The attributes that should be cast to native types.

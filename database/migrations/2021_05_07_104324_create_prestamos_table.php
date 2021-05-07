@@ -14,16 +14,16 @@ class CreatePrestamosTable extends Migration
     public function up()
     {
         Schema::create('prestamos', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('importe');
-            $table->integer('intereses');
-            $table->unsignedBigInteger('idUsuario');
-            $table->foreign('idUsuario', 'fk_prestamos_usuariosId')
+            $table->bigIncrements('id');                                        //id del prestamos
+            $table->integer('importe');                                         //importe del prestamo
+            $table->integer('intereses');                                       //intereses del prestamo
+            $table->unsignedBigInteger('idUsuario');                            //id del usuario
+            $table->foreign('idUsuario', 'fk_prestamos_usuariosId')             //relacion entre la tabla prestamos y usuarios
             ->on('usuarios')
             ->references('id')
             ->onDelete('restrict');
-            $table->unsignedBigInteger('idBanco');
-            $table->foreign('idBanco', 'fk_pretamos_bancos')
+            $table->unsignedBigInteger('idBanco');                              //id del banco
+            $table->foreign('idBanco', 'fk_pretamos_bancos')                    //relacion entre la tabla prestamos y bancos
             ->on('bancos')
             ->references('id')
             ->onDelete('restrict');

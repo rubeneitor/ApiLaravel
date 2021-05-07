@@ -2,7 +2,12 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ControllerUsuario;
-// use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Route;
+
+
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +20,16 @@ use App\Http\Controllers\ControllerUsuario;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+
 
 //Rutas a las que se permite el acceso 
-// Route::group(['middleware' => ['cors']], function(){
 
-    //registro
+    //Registro usuario
     Route::post('/registro', [ControllerUsuario::class, 'register']);
-// });
 
-// Route::apiResource("registro", "Controller");
+
+    //Recuperacion contraseña por email 1
+    Route::post('/recuperarCont1', [ControllerUsuario::class, 'recoverPass1']);
+
+    //Recuperacion contraseña por email 2
+    Route::post('/recuperarCont2', [ControllerUsuario::class, 'recoverPass2']);

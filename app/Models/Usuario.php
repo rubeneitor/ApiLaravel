@@ -27,6 +27,8 @@ class Usuario extends Model
         'resSecreta'
     ];
 
+    //Metodos que relacionan las tablas (explicado en el modelo de relacion incluido en el repositorio)
+
     public function bancos(){
         return $this->hasMany('App\Models\Banco');
     }
@@ -38,6 +40,8 @@ class Usuario extends Model
     public function pagos(){
         return $this->hasMany('App\Models\Pago');
     }
+
+    /////////
 
     /**
      * The attributes that should be cast to native types.
