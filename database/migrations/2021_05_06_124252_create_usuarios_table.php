@@ -15,11 +15,12 @@ class CreateUsuariosTable extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->bigIncrements('id');                            //id del usuario
-            $table->string('nombre');                               //nombre del usuario
+            $table->string('nombre')->nullable();                               //nombre del usuario
             $table->string('email')->unique();                      //emial del usuario
             $table->string('contraseña');                           //contraseña el usuario
             $table->string('resSecreta');                           //respuesta secreta recuperacion contraseña
             $table->string('preSecreta');                           //pregunta secreta recuperacion contraseña
+            $table->string('token')->nullable();                    //token
             $table->timestamps();
         });
     }

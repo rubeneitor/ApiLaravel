@@ -22,14 +22,19 @@ use Illuminate\Support\Facades\Route;
 
 
 
-//Rutas a las que se permite el acceso 
+//Rutas
 
     //Registro usuario
     Route::post('/registro', [ControllerUsuario::class, 'register']);
-
 
     //Recuperacion contraseña por email 1
     Route::post('/recuperarCont1', [ControllerUsuario::class, 'recoverPass1']);
 
     //Recuperacion contraseña por email 2
     Route::post('/recuperarCont2', [ControllerUsuario::class, 'recoverPass2']);
+
+    //Login usuario
+    Route::post('/login', [ControllerUsuario::class, 'login']);
+
+    //Logout usuario
+    Route::post('/logout', [ControllerUsuario::class, 'logout']);
